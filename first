@@ -16,22 +16,13 @@ public class Ch09Asg {
 
 	public static void main(String[] args) {
 		
-		
 		Scanner sc = new Scanner(System.in);
 		DiceSimulation user = new DiceSimulation();
-			
-		System.out.println("		Welcome to Dice Simulator of death!!");
-		System.out.println("\nOptions:");
-		System.out.println("New simulation   - N");
-		System.out.println("Additional rolls - A");
-		System.out.println("Print            - P");
-		System.out.println("Quit             - Q");
-		String options = sc.nextLine();
 		
-		
-		//System.out.print(Arrays.toString(frequency));
-		System.exit(0);
+		user.prompt();																																			//System.out.print(Arrays.toString(frequency));
 		while(true){
+			System.out.print("\nEnter Choice: ");
+			String options = sc.nextLine();
 			switch (options)
 			{
 			case "n":
@@ -69,36 +60,167 @@ public class Ch09Asg {
 class DiceSimulation{
 
 	Scanner stdIn = new Scanner(System.in);
-
+	int frequency[] = {0,0,0,0,0,0,0,0,0,0,0,0};
+	public int rolls;
 	public void newSimulation()
 	{
-
-		int frequency[] = {0,1,2,3,4,5,6};
-		//for(int die: frequency)
-	//	{
-		//	System.out.println(die);
-		//}
-		
-		System.out.println("How many Rolls?");
-		int rolls = stdIn.nextInt();		
-		
-		//for( int i=0; i<Frequency.length; i++);
-		//{		
-		///	System.out.println(Frequency);		
-	//	}
-		
+		Arrays.fill(frequency, 0);
+		System.out.println("How many rolls would you like?");												//																								//int rolls = Integer.parseInt(stdIn.nextLine());
+		rolls = stdIn.nextInt();
+		dice(rolls);     
 	}
-
 	public void additionalRolls()
 	{
-	
+		System.out.println("How many more rolls would you like?");
+		rolls = stdIn.nextInt();
+		dice(rolls);	
 	}
-
-	public void printReport(){
-
-		//System.out.print();
-
+	public void printReport()
+	{
+		System.out.println("---------------------------------------------------------");
+		System.out.println("DICE ROLLING SIMULATION RESULTS");
+		System.out.println("Each '*' represents 1% of the total number of rolls.");
+		System.out.println("Total number of rolls = " + rolls);
+		System.out.println("2:  "          + frequency[1]    + "   times");
+        System.out.println("3:  "          + frequency[2]  + "  times ");
+        System.out.println("4:  "          + frequency[3]   + "  times ");
+        System.out.println("5   " 	       + frequency[4]   + "  times ");
+        System.out.println("6:  " 	       + frequency[5]    + "  times ");
+        System.out.println("7:  "	       + frequency[6]  + "  times ");
+        System.out.println("8:  " 	       + frequency[7]  + "  times ");
+        System.out.println("9:  " 	       + frequency[8]   + "  times ");
+        System.out.println("10: " 	       + frequency[9]    + "   times ");
+        System.out.println("11: " 	       + frequency[10] + "   times ");
+        System.out.println("12: " 	       + frequency[11] + "   times ");
+		System.out.println("---------------------------------------------------------");
+		
 	}
-
+	public void prompt()
+	{
+		System.out.println("		Welcome to Dice Simulator of death!!");
+		System.out.println("\nOptions:");
+		System.out.println("New simulation   - N");
+		System.out.println("Additional rolls - A");
+		System.out.println("Print            - P");
+		System.out.println("Quit             - Q");
+	}
+	private void dice(int rolls)
+	{
+		int die1[] = new int[rolls];
+        int die2[] = new int[rolls];
+         
+         for (int i=0; i<rolls; i++ ) {
+            die1[i] = (int)((Math.random() * 6) + 1);
+            die2[i] = (int)((Math.random() * 6) + 1);
+            int dieTotal = die1[i] + die2[i];
+            add(dieTotal);
+         }
+	}
+	private void add(int dieTotal)
+	{
+		if (dieTotal == 2) {
+			frequency[1]++;
+        }
+        else if (dieTotal == 3) {
+        	frequency[2]++;
+        }
+        else if (dieTotal == 4) {
+        	frequency[3]++;
+        }
+        else if (dieTotal == 5) {
+        	frequency[4]++;
+        }
+        else if (dieTotal == 6) {
+        	frequency[5]++;
+        }
+        else if (dieTotal == 7) {
+        	frequency[6]++;
+        }
+        else if (dieTotal == 8) {
+        	frequency[7]++;
+        } 
+        else if (dieTotal == 9) {
+        	frequency[8]++;
+        }
+        else if (dieTotal == 10) {
+        	frequency[9]++;
+        }
+        else if (dieTotal == 11) {
+        	frequency[10]++;
+        }
+        else if (dieTotal == 12) {
+        	frequency[11]++;
+        } 
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * 
+ * 
+ * System.out.println("\n" + "Total Results:");
+        System.out.println("\nYou rolled '2'  "        + frequency[1]    + "   times");
+        System.out.println("You rolled '3'  "          + frequency[2]  + "  times ");
+        System.out.println("You rolled '4'  "          + frequency[3]   + "  times ");
+        System.out.println("You rolled '5'  " 	       + frequency[4]   + "  times ");
+        System.out.println("You rolled '6'  " 	       + frequency[5]    + "  times ");
+        System.out.println("You rolled '7'  "	       + frequency[6]  + "  times ");
+        System.out.println("You rolled '8'  " 	       + frequency[7]  + "  times ");
+        System.out.println("You rolled '9'  " 	       + frequency[8]   + "  times ");
+        System.out.println("You rolled '10' " 	       + frequency[9]    + "   times ");
+        System.out.println("You rolled '11' " 	       + frequency[10] + "   times ");
+        System.out.println("You rolled '12' " 	       + frequency[11] + "   times ");
+        //System.out.print(Arrays.toString(total));
+ * 
+ * 
+ * 
+ * 
+ * */
 
